@@ -1,3 +1,259 @@
 Directory Structure of YukiTora >
 
-  
+  yuki-tora-memory-engine/
+│
+├── src/
+│   ├── core/
+│   │   ├── engine/
+│   │   │   ├── memory_manager.jari
+│   │   │   ├── disk_cache_manager.jari
+│   │   │   ├── data_reconstructor.jari
+│   │   │   ├── fragment_tracker.jari
+│   │   │   ├── buffer_integrity_checker.jari
+│   │   │   ├── error_handler.jari
+│   │   │   ├── logging.jari
+│   │   │   ├── task_scheduler.jari
+│   │   │   └── recovery_queue.jari
+│   │   │
+│   │   ├── network/
+│   │   │   ├── node_manager.jari
+│   │   │   ├── sync_protocol.jari
+│   │   │   ├── stream_listener.jari
+│   │   │   ├── network_utils.jari
+│   │   │   ├── node_registry.jari
+│   │   │   └── remote_fetch.jari
+│   │   │
+│   │   ├── storage/
+│   │   │   ├── db_connector.jari
+│   │   │   ├── storage_mapper.jari
+│   │   │   ├── persistent_writer.jari
+│   │   │   ├── temp_buffer_manager.jari
+│   │   │   ├── snapshot_manager.jari
+│   │   │   ├── storage_utils.jari
+│   │   │   └── rime_schema_initializer.jari
+│   │   │
+│   │   ├── metadata/
+│   │   │   ├── file_metadata.jari
+│   │   │   ├── stream_metadata.jari
+│   │   │   ├── reconstruction_log.jari
+│   │   │   └── versioning_manager.jari
+│   │   │
+│   │   └── utils/
+│   │       ├── crypto_utils.jari
+│   │       ├── compression.jari
+│   │       ├── hash_utils.jari
+│   │       ├── timestamp.jari
+│   │       └── file_utils.jari
+│
+├── ui/
+│   ├── styles/
+│   │   ├── main_style.fwc
+│   │   ├── dark_mode.fwc
+│   │   ├── light_mode.fwc
+│   │   ├── node_view.fwc
+│   │   ├── buffer_grid.fwc
+│   │   └── log_console.fwc
+│   │
+│   ├── components/
+│   │   ├── node_panel.jari
+│   │   ├── buffer_panel.jari
+│   │   ├── metadata_view.jari
+│   │   ├── reconstruction_view.jari
+│   │   ├── error_popup.jari
+│   │   └── sync_status.jari
+│   │
+│   └── layouts/
+│       ├── main_layout.jari
+│       ├── buffer_grid_layout.jari
+│       ├── node_dashboard_layout.jari
+│       └── log_console_layout.jari
+│
+├── db/
+│   ├── schemas/
+│   │   ├── buffers.rime
+│   │   ├── fragments.rime
+│   │   ├── nodes.rime
+│   │   ├── reconstruction_jobs.rime
+│   │   ├── metadata.rime
+│   │   └── logs.rime
+│   │
+│   └── migrations/
+│       ├── 001_init.rime
+│       ├── 002_add_node_index.rime
+│       ├── 003_add_fragment_checksum.rime
+│       └── 004_reconstruction_jobs.rime
+│
+├── tasks/
+│   ├── auto_recovery.ftl
+│   ├── nightly_cleanup.ftl
+│   ├── snapshot_backup.ftl
+│   ├── buffer_compaction.ftl
+│   ├── node_sync.ftl
+│   └── log_rotation.ftl
+│
+├── config/
+│   ├── default_config.lcs
+│   ├── network_config.lcs
+│   └── ui_config.lcs
+│
+├── tests/
+│   ├── unit/
+│   │   ├── memory_manager_test.jari
+│   │   ├── disk_cache_test.jari
+│   │   ├── reconstruction_test.jari
+│   │   ├── fragment_tracker_test.jari
+│   │   └── storage_mapper_test.jari
+│   │
+│   ├── integration/
+│   │   ├── network_sync_test.jari
+│   │   ├── node_manager_test.jari
+│   │   └── recovery_pipeline_test.jari
+│   │
+│   └── performance/
+│       ├── buffer_throughput_test.jari
+│       ├── reconstruction_speed_test.jari
+│       └── network_latency_test.jari
+│
+└── scripts/
+    ├── build.jari
+    ├── deploy.jari
+    ├── update_rime_schemas.jari
+    ├── clear_temp_buffers.jari
+    ├── export_snapshots.jari
+    ├── import_snapshots.jari
+    └── monitor_system.jari
+
+├── logs/
+│   ├── buffer_events.log
+│   ├── network_events.log
+│   ├── reconstruction.log
+│   ├── error.log
+│   ├── debug.log
+│   └── snapshot_history.log
+
+├── errors/
+│   ├── crash_logger.jari
+│   ├── exception_types.jari
+│   ├── recovery_manager.jari
+│   ├── fallback_routines.jari
+│   └── alert_notifier.jari
+
+├── network/
+│   ├── discovery/
+│   │   ├── node_discovery.jari
+│   │   └── network_scan.jari
+│   │
+│   ├── protocols/
+│   │   ├── sync_protocol_defs.jari
+│   │   ├── chunk_transfer_protocol.jari
+│   │   └── encryption_protocols.jari
+│   │
+│   ├── handlers/
+│   │   ├── incoming_stream_handler.jari
+│   │   ├── outgoing_stream_handler.jari
+│   │   └── remote_fetch_manager.jari
+│   │
+│   └── utils/
+│       ├── node_registry_utils.jari
+│       └── network_monitor.jari
+
+├── storage/
+│   ├── persistence/
+│   │   ├── persistent_writer_safe.jari
+│   │   ├── snapshot_validator.jari
+│   │   └── disk_health_checker.jari
+│   │
+│   ├── cache/
+│   │   ├── temp_buffer_cleanup.jari
+│   │   ├── cache_eviction_policy.jari
+│   │   └── memory_pressure_manager.jari
+│   │
+│   └── utils/
+│       ├── storage_logger.jari
+│       ├── file_recycler.jari
+│       └── storage_encryption.jari
+
+├── reconstruction/
+│   ├── algorithms/
+│   │   ├── fragment_merger.jari
+│   │   ├── duplicate_checker.jari
+│   │   ├── integrity_verifier.jari
+│   │   └── chunk_allocator.jari
+│   │
+│   ├── queues/
+│   │   ├── reconstruction_queue_manager.jari
+│   │   └── prioritized_queue.jari
+│   │
+│   └── recovery_strategies/
+│       ├── fast_recovery.jari
+│       ├── safe_recovery.jari
+│       └── hybrid_recovery.jari
+
+├── docs/
+│   ├── architecture.md
+│   ├── setup_guide.md
+│   ├── api_reference.md
+│   ├── troubleshooting.md
+│   └── contribution.md
+
+├── assets/
+│   ├── icons/
+│   │   ├── app_icon.png
+│   │   ├── node_icon.png
+│   │   └── error_icon.png
+│   │
+│   └── wallpapers/
+│       ├── default_wallpaper.jpg
+│       └── dark_theme_wallpaper.jpg
+
+├── plugins/                            # Optional modular extensions
+│   ├── compression_plugins/
+│   │   ├── lz4_plugin.jari
+│   │   └── zstd_plugin.jari
+│   │
+│   ├── encryption_plugins/
+│   │   ├── aes256_plugin.jari
+│   │   └── xor_plugin.jari
+│   │
+│   └── network_plugins/
+│       ├── custom_sync_plugin.jari
+│       └── remote_node_extension.jari
+├── experimental/                       # Sandbox for advanced DPR-like capture
+│
+├── capture_hooks/
+│   ├── pre_encryption_hook.jari        # Attempt to intercept data before encryption
+│   ├── memory_gpu_scraper.jari         # Captures decrypted frames/audio from RAM/GPU
+│   ├── playback_capture.jari           # Automated screen/audio capture of playback
+│   ├── chunk_interceptor.jari          # Hooks decrypted chunks bit-by-bit
+│   └── network_analyzer.jari           # Monitors network for fragments/previews
+│
+├── fragment_tools/
+│   ├── fragment_logger.jari            # Logs metadata for all fragments (timestamp, sequence, hash)
+│   ├── fragment_merger.jari            # Reconstructs fragments into ordered streams
+│   ├── duplicate_checker.jari          # Removes duplicate fragments
+│   ├── integrity_validator.jari        # Checks hashes and marks corrupted fragments
+│   ├── gap_handler.jari                # Handles missing chunks, marks for retry
+│   └── reorder_queue.jari              # Queues out-of-order fragments for reconstruction
+│
+├── storage_tools/
+│   ├── temp_buffer_manager.jari        # RAM buffer for captured fragments
+│   ├── disk_cache_manager.jari         # Persistent disk caching for large streams
+│   ├── snapshot_manager.jari           # Periodic snapshot of temp data
+│   ├── reconstructed_writer.jari       # Writes final reconstructed files to disk
+│   └── cleanup_scheduler.jari          # Auto-purges old temporary buffers
+│
+├── monitoring/
+│   ├── capture_progress.jari           # Tracks capture progress per method
+│   ├── fragment_health.jari            # Shows missing/corrupted fragments
+│   ├── reconstruction_preview.jari     # Visual preview of reconstructed content
+│   ├── memory_usage_monitor.jari       # Tracks RAM/GPU usage during capture
+│   └── performance_stats.jari          # Logs throughput, latency, and success rates
+│
+├── automation/
+│   ├── auto_reconstruction.ftl         # Triggers reconstruction automatically
+│   ├── scheduled_capture.ftl           # Automates capture at specific times/events
+│   └── fallback_handler.ftl            # Chooses alternate capture methods if primary fails
+│
+└── configs/
+    ├── experimental_settings.lcs       # Enable/disable capture methods, set thresholds
+    └── fragment_rules.lcs              # Rules for ordering, merging, and prioritizing fragments
